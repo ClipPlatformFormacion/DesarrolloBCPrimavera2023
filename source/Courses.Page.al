@@ -1,5 +1,6 @@
 page 50100 "Course List"
 {
+    CaptionML = ENU = 'Courses', ESP = 'Cursos';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
@@ -17,7 +18,7 @@ page 50100 "Course List"
                 field("Duration (hours)"; Rec."Duration (hours)") { ApplicationArea = All; }
                 field(Price; Rec.Price) { ApplicationArea = All; }
                 field("Type (Option)"; Rec."Type (Option)") { ApplicationArea = All; }
-                field(Type;Rec.Type){ ApplicationArea = All; }
+                field(Type; Rec.Type) { ApplicationArea = All; }
                 field("Language Code"; Rec."Language Code") { ApplicationArea = All; }
             }
         }

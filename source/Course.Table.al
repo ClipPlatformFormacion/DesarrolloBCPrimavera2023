@@ -9,13 +9,9 @@ table 50100 Course
 
             trigger OnValidate()
             var
-                IsHandled: Boolean;
+                ResSetup: Record "Resources Setup";
+                NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
-                IsHandled := false;
-                OnBeforeValidateNo(Rec, xRec, IsHandled);
-                if IsHandled then
-                    exit;
-
                 if "No." <> xRec."No." then begin
                     ResSetup.Get();
                     NoSeriesMgt.TestManual(ResSetup."Resource Nos.");
@@ -54,31 +50,49 @@ table 50100 Course
             CaptionML = ENU = 'Language Code', ESP = 'Cód. idioma';
             TableRelation = Language;
         }
+        field(56; "No. Series"; Code[20])
+        {
+            CaptionML = ENU = 'No. Series', ESP = 'Nº Serie';
+            Editable = false;
+            TableRelation = "No. Series";
+        }
     }
 
     trigger OnInsert()
     var
-        IsHandled: Boolean;
+        ResSetup: Record "Resources Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
-        IsHandled := false;
-        OnBeforeOnInsert(Rec, IsHandled, xRec);
-        if IsHandled then
-            exit;
-
         if "No." = '' then begin
             ResSetup.Get();
             ResSetup.TestField("Resource Nos.");
             NoSeriesMgt.InitSeries(ResSetup."Resource Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
+    end;
 
-        if GetFilter("Resource Group No.") <> '' then
-            if GetRangeMin("Resource Group No.") = GetRangeMax("Resource Group No.") then
-                Validate("Resource Group No.", GetRangeMin("Resource Group No."));
+    procedure AssistEdit(OldRes: Record Resource) Result: Boolean
+    var
+        IsHandled: Boolean;
+        ResSetup: Record "Resources Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        Res: Record Resource;
+    begin
+        // IsHandled := false;
+        // OnBeforeAssistEdit(Rec, OldRes, IsHandled, Result);
+        // if IsHandled then
+        //     exit;
 
-        DimMgt.UpdateDefaultDim(
-          DATABASE::Resource, "No.",
-          "Global Dimension 1 Code", "Global Dimension 2 Code");
-
-        UpdateResourceUnitGroup();
+        // with Res do begin
+        //     Res := Rec;
+        //     ResSetup.Get();
+        //     ResSetup.TestField("Resource Nos.");
+        //     if NoSeriesMgt.SelectSeries(ResSetup."Resource Nos.", OldRes."No. Series", "No. Series") then begin
+        //         ResSetup.Get();
+        //         ResSetup.TestField("Resource Nos.");
+        //         NoSeriesMgt.SetSeries("No.");
+        //         Rec := Res;
+        //         exit(true);
+        //     end;
+        // end;
     end;
 }

@@ -1,12 +1,12 @@
-page 462 "Resources Setup"
+page 50102 "Courses Setup"
 {
-    AccessByPermission = TableData Resource = R;
+    AccessByPermission = TableData Course = R;
     ApplicationArea = Jobs;
-    Caption = 'Resources Setup';
+    CaptionML = ENU = 'Courses Setup', ESP = 'Conf. cursos';
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = Card;
-    SourceTable = "Resources Setup";
+    SourceTable = "Courses Setup";
     UsageCategory = Administration;
 
     layout
@@ -15,26 +15,11 @@ page 462 "Resources Setup"
         {
             group(Numbering)
             {
-                Caption = 'Numbering';
-                field("Resource Nos."; "Resource Nos.")
+                CaptionML = ENU = 'Numbering', ESP = 'Numeración';
+                field("Course Nos."; Rec."Course Nos.")
                 {
                     ApplicationArea = Jobs;
-                    ToolTip = 'Specifies the number series code you can use to assign numbers to resources.';
-                }
-                field("Time Sheet Nos."; "Time Sheet Nos.")
-                {
-                    ApplicationArea = Jobs;
-                    ToolTip = 'Specifies the number series code you can use to assign document numbers to time sheets.';
-                }
-                field("Time Sheet First Weekday"; "Time Sheet First Weekday")
-                {
-                    ApplicationArea = Jobs;
-                    ToolTip = 'Specifies the first weekday to use on a time sheet. The default is Monday.';
-                }
-                field("Time Sheet by Job Approval"; "Time Sheet by Job Approval")
-                {
-                    ApplicationArea = Jobs;
-                    ToolTip = 'Specifies whether time sheets must be approved on a per job basis by the user specified for the job.';
+                    ToolTip = 'Specifies the number series code you can use to assign numbers to Courses.';
                 }
             }
         }
@@ -53,16 +38,12 @@ page 462 "Resources Setup"
         }
     }
 
-    actions
-    {
-    }
-
     trigger OnOpenPage()
     begin
-        Reset;
-        if not Get then begin
-            Init;
-            Insert;
+        Rec.Reset;
+        if not Rec.Get then begin
+            Rec.Init;
+            Rec.Insert;
         end;
     end;
 }

@@ -9,12 +9,12 @@ table 50100 Course
 
             trigger OnValidate()
             var
-                ResSetup: Record "Resources Setup";
+                ResSetup: Record "Courses Setup";
                 NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
                 if "No." <> xRec."No." then begin
                     ResSetup.Get();
-                    NoSeriesMgt.TestManual(ResSetup."Resource Nos.");
+                    NoSeriesMgt.TestManual(ResSetup."Course Nos.");
                     "No. Series" := '';
                 end;
             end;
@@ -60,39 +60,39 @@ table 50100 Course
 
     trigger OnInsert()
     var
-        ResSetup: Record "Resources Setup";
+        ResSetup: Record "Courses Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         if "No." = '' then begin
             ResSetup.Get();
-            ResSetup.TestField("Resource Nos.");
-            NoSeriesMgt.InitSeries(ResSetup."Resource Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            ResSetup.TestField("Course Nos.");
+            NoSeriesMgt.InitSeries(ResSetup."Course Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
     end;
 
-    procedure AssistEdit(OldRes: Record Resource) Result: Boolean
+    procedure AssistEdit(OldRes: Record Course) Result: Boolean
     var
         IsHandled: Boolean;
-        ResSetup: Record "Resources Setup";
+        ResSetup: Record "Courses Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        Res: Record Resource;
+        Res: Record Course;
     begin
         // IsHandled := false;
         // OnBeforeAssistEdit(Rec, OldRes, IsHandled, Result);
         // if IsHandled then
         //     exit;
 
-        // with Res do begin
-        //     Res := Rec;
-        //     ResSetup.Get();
-        //     ResSetup.TestField("Resource Nos.");
-        //     if NoSeriesMgt.SelectSeries(ResSetup."Resource Nos.", OldRes."No. Series", "No. Series") then begin
-        //         ResSetup.Get();
-        //         ResSetup.TestField("Resource Nos.");
-        //         NoSeriesMgt.SetSeries("No.");
-        //         Rec := Res;
-        //         exit(true);
-        //     end;
-        // end;
+        with Res do begin
+            Res := Rec;
+            ResSetup.Get();
+            ResSetup.TestField("Course Nos.");
+            if NoSeriesMgt.SelectSeries(ResSetup."Course Nos.", OldRes."No. Series", "No. Series") then begin
+                ResSetup.Get();
+                ResSetup.TestField("Course Nos.");
+                NoSeriesMgt.SetSeries("No.");
+                Rec := Res;
+                exit(true);
+            end;
+        end;
     end;
 }

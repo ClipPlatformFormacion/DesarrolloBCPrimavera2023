@@ -39,4 +39,18 @@ page 50101 "Course Card"
             }
         }
     }
+
+    actions
+    {
+        area(Navigation)
+        {
+            action(Editions)
+            {
+                ApplicationArea = All;
+                CaptionML = ENU = 'Editions', ESP = 'Ediciones';
+                RunObject = page "Course Editions";
+                RunPageLink = "Course No." = field("No.");
+            }
+        }
+    }
 }

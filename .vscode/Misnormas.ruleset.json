@@ -1,0 +1,11 @@
+{
+    "name": "Mis normas",
+    "description": "Mis normas personalizadas",
+    "rules": [
+        {
+            "id": "AA0218",
+            "action": "None",
+            "justification": "No quiero poner tantos ToolTips"
+        }
+    ]
+}

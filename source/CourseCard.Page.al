@@ -15,6 +15,7 @@ page 50101 "Course Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    ToolTipML = ENU = 'contextual help', ESP = 'ayuda contextual';
 
                     trigger OnAssistEdit()
                     begin

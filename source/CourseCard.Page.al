@@ -24,6 +24,12 @@ page 50101 "Course Card"
                 }
                 field(Name; Rec.Name) { ApplicationArea = All; }
             }
+            part(CourseEditions; "Course Editions FactBox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Course No." = field("No.");
+            }
+
             group(Training)
             {
                 CaptionML = ENU = 'Training', ESP = 'Formación';

@@ -26,6 +26,15 @@ page 50100 "Course List"
                 }
             }
         }
+
+        area(FactBoxes)
+        {
+            part(CourseEditions; "Course Editions FactBox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Course No." = field("No.");
+            }
+        }
     }
 
     actions

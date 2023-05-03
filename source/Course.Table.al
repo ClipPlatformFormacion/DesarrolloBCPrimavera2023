@@ -60,39 +60,37 @@ table 50100 "Course"
 
     trigger OnInsert()
     var
-        ResSetup: Record "Courses Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
+        CoursesSetup: Record "Courses Setup";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
     begin
         if "No." = '' then begin
-            ResSetup.Get();
-            ResSetup.TestField("Course Nos.");
-            NoSeriesMgt.InitSeries(ResSetup."Course Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            CoursesSetup.Get();
+            CoursesSetup.TestField("Course Nos.");
+            NoSeriesManagement.InitSeries(CoursesSetup."Course Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
     end;
 
-    procedure AssistEdit(OldRes: Record Course) Result: Boolean
+    procedure AssistEdit(OldCourse: Record Course) Result: Boolean
     var
-        IsHandled: Boolean;
-        ResSetup: Record "Courses Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
-        Res: Record Course;
+        CoursesSetup: Record "Courses Setup";
+        Course: Record Course;
+        NoSeriesManagement: Codeunit NoSeriesManagement;
+    // IsHandled: Boolean;
     begin
         // IsHandled := false;
         // OnBeforeAssistEdit(Rec, OldRes, IsHandled, Result);
         // if IsHandled then
         //     exit;
 
-        with Res do begin
-            Res := Rec;
-            ResSetup.Get();
-            ResSetup.TestField("Course Nos.");
-            if NoSeriesMgt.SelectSeries(ResSetup."Course Nos.", OldRes."No. Series", "No. Series") then begin
-                ResSetup.Get();
-                ResSetup.TestField("Course Nos.");
-                NoSeriesMgt.SetSeries("No.");
-                Rec := Res;
-                exit(true);
-            end;
+        Course := Rec;
+        CoursesSetup.Get();
+        CoursesSetup.TestField("Course Nos.");
+        if NoSeriesManagement.SelectSeries(CoursesSetup."Course Nos.", OldCourse."No. Series", Course."No. Series") then begin
+            CoursesSetup.Get();
+            CoursesSetup.TestField("Course Nos.");
+            NoSeriesManagement.SetSeries(Course."No.");
+            Rec := Course;
+            exit(true);
         end;
     end;
 }

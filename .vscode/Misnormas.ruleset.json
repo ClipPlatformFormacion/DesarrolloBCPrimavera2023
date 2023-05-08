@@ -6,6 +6,26 @@
             "id": "AA0218",
             "action": "None",
             "justification": "No quiero poner tantos ToolTips"
+        },
+        {
+            "id": "AS0051",
+            "action": "None",
+            "justification": "De momento no voy al marketplace"
+        },
+        {
+            "id": "AS0052",
+            "action": "None",
+            "justification": "De momento no voy al marketplace"
+        },
+        {
+            "id": "AS0084",
+            "action": "None",
+            "justification": "De momento no voy al marketplace"
+        },
+        {
+            "id": "AS0092",
+            "action": "None",
+            "justification": "De momento no voy al marketplace"
         }
     ]
 }

@@ -6,7 +6,8 @@
     "al.enableCodeAnalysis": true,
     "al.codeAnalyzers": [
         "${CodeCop}",
-        "${UICop}"
+        "${UICop}",
+        "${PerTenantExtensionCop}"
     ],
     "al.ruleSetPath": "./.vscode/Misnormas.ruleset.json"
 }

@@ -1,6 +1,6 @@
 page 50104 "Course Editions FactBox"
 {
-    CaptionML = ENU = 'Course Editions', ESP = 'Ediciones cursos';
+    Caption = 'Course Editions', Comment = 'ESP="Ediciones cursos"';
     PageType = ListPart;
     UsageCategory = None;
     SourceTable = "Course Edition";

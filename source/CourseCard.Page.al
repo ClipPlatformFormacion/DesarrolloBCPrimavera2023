@@ -1,6 +1,6 @@
 page 50101 "Course Card"
 {
-    CaptionML = ENU = 'Course Card', ESP = 'Ficha curso';
+    Caption = 'Course Card', Comment = 'ESP="Ficha curso"';
     PageType = Card;
     UsageCategory = None;
     SourceTable = Course;
@@ -11,11 +11,11 @@ page 50101 "Course Card"
         {
             group(General)
             {
-                CaptionML = ENU = 'General', ESP = 'General';
+                Caption = 'General', Comment = 'ESP="General"';
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-                    ToolTipML = ENU = 'contextual help', ESP = 'ayuda contextual';
+                    ToolTip = 'contextual help', Comment = 'ESP="ayuda contextual"';
 
                     trigger OnAssistEdit()
                     begin
@@ -33,7 +33,7 @@ page 50101 "Course Card"
 
             group(Training)
             {
-                CaptionML = ENU = 'Training', ESP = 'Formación';
+                Caption = 'Training', Comment = 'ESP="Formación"';
                 field(Type; Rec.Type) { ApplicationArea = All; }
                 field("Duration (hours)"; Rec."Duration (hours)") { ApplicationArea = All; }
                 field("Language Code"; Rec."Language Code") { ApplicationArea = All; }
@@ -41,7 +41,7 @@ page 50101 "Course Card"
             }
             group(Invoicing)
             {
-                CaptionML = ENU = 'Invoicing', ESP = 'Facturación';
+                Caption = 'Invoicing', Comment = 'ESP="Facturación"';
                 field(Price; Rec.Price) { ApplicationArea = All; }
             }
         }
@@ -54,7 +54,7 @@ page 50101 "Course Card"
             action(Editions)
             {
                 ApplicationArea = All;
-                CaptionML = ENU = 'Editions', ESP = 'Ediciones';
+                Caption = 'Editions', Comment = 'ESP="Ediciones"';
                 Image = CodesList;
                 RunObject = page "Course Editions";
                 RunPageLink = "Course No." = field("No.");

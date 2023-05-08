@@ -1,6 +1,6 @@
 page 50100 "Course List"
 {
-    CaptionML = ENU = 'Courses', ESP = 'Cursos';
+    Caption = 'Courses', Comment = 'ESP="Cursos"';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
@@ -44,7 +44,7 @@ page 50100 "Course List"
             action(Editions)
             {
                 ApplicationArea = All;
-                CaptionML = ENU = 'Editions', ESP = 'Ediciones';
+                Caption = 'Editions', Comment = 'ESP="Ediciones"';
                 Image = CodesList;
                 RunObject = page "Course Editions";
                 RunPageLink = "Course No." = field("No.");

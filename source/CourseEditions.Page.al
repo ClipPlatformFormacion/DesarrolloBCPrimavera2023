@@ -1,6 +1,6 @@
 page 50103 "Course Editions"
 {
-    CaptionML = ENU = 'Course Editions', ESP = 'Ediciones cursos';
+    Caption = 'Course Editions', Comment = 'ESP="Ediciones cursos"';
     PageType = List;
     UsageCategory = None;
     SourceTable = "Course Edition";

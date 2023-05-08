@@ -55,6 +55,7 @@ page 50101 "Course Card"
             {
                 ApplicationArea = All;
                 CaptionML = ENU = 'Editions', ESP = 'Ediciones';
+                Image = CodesList;
                 RunObject = page "Course Editions";
                 RunPageLink = "Course No." = field("No.");
             }

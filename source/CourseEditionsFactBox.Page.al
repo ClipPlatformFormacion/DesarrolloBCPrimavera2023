@@ -1,9 +1,9 @@
-page 50104 "Course Editions FactBox"
+page 50104 "CLIP Course Editions FactBox"
 {
     Caption = 'Course Editions', Comment = 'ESP="Ediciones cursos"';
     PageType = ListPart;
     UsageCategory = None;
-    SourceTable = "Course Edition";
+    SourceTable = "CLIP Course Edition";
     DataCaptionFields = "Course No.";
 
     layout

@@ -1,9 +1,9 @@
-page 50101 "Course Card"
+page 50101 "CLIP Course Card"
 {
     Caption = 'Course Card', Comment = 'ESP="Ficha curso"';
     PageType = Card;
     UsageCategory = None;
-    SourceTable = Course;
+    SourceTable = "CLIP Course";
 
     layout
     {
@@ -25,7 +25,7 @@ page 50101 "Course Card"
                 }
                 field(Name; Rec.Name) { ApplicationArea = All; }
             }
-            part(CourseEditions; "Course Editions FactBox")
+            part(CourseEditions; "CLIP Course Editions FactBox")
             {
                 ApplicationArea = All;
                 SubPageLink = "Course No." = field("No.");
@@ -56,7 +56,7 @@ page 50101 "Course Card"
                 ApplicationArea = All;
                 Caption = 'Editions', Comment = 'ESP="Ediciones"';
                 Image = CodesList;
-                RunObject = page "Course Editions";
+                RunObject = page "CLIP Course Editions";
                 RunPageLink = "Course No." = field("No.");
             }
         }

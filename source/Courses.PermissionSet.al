@@ -1,17 +1,17 @@
-permissionset 50100 "Courses"
+permissionset 50100 "CLIP Courses"
 {
     Caption = 'Courses', Comment = 'ESP="Cursos"';
     Assignable = true;
     Permissions =
-        tabledata Course = RIMD,
-        tabledata "Course Edition" = RIMD,
-        tabledata "Courses Setup" = RIMD,
-        table Course = X,
-        table "Course Edition" = X,
-        table "Courses Setup" = X,
-        page "Course Card" = X,
-        page "Course Editions" = X,
-        page "Course Editions FactBox" = X,
-        page "Course List" = X,
-        page "Courses Setup" = X;
+        tabledata "CLIP Course" = RIMD,
+        tabledata "CLIP Course Edition" = RIMD,
+        tabledata "CLIP Courses Setup" = RIMD,
+        table "CLIP Course" = X,
+        table "CLIP Course Edition" = X,
+        table "CLIP Courses Setup" = X,
+        page "CLIP Course Card" = X,
+        page "CLIP Course Editions" = X,
+        page "CLIP Course Editions FactBox" = X,
+        page "CLIP Course List" = X,
+        page "CLIP Courses Setup" = X;
 }

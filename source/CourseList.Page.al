@@ -1,12 +1,12 @@
-page 50100 "Course List"
+page 50100 "CLIP Course List"
 {
     Caption = 'Courses', Comment = 'ESP="Cursos"';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Course;
+    SourceTable = "CLIP Course";
     Editable = false;
-    CardPageId = "Course Card";
+    CardPageId = "CLIP Course Card";
 
     layout
     {
@@ -29,7 +29,7 @@ page 50100 "Course List"
 
         area(FactBoxes)
         {
-            part(CourseEditions; "Course Editions FactBox")
+            part(CourseEditions; "CLIP Course Editions FactBox")
             {
                 ApplicationArea = All;
                 SubPageLink = "Course No." = field("No.");
@@ -46,7 +46,7 @@ page 50100 "Course List"
                 ApplicationArea = All;
                 Caption = 'Editions', Comment = 'ESP="Ediciones"';
                 Image = CodesList;
-                RunObject = page "Course Editions";
+                RunObject = page "CLIP Course Editions";
                 RunPageLink = "Course No." = field("No.");
             }
         }

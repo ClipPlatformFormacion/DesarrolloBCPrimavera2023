@@ -1,4 +1,4 @@
-table 50100 "Course"
+table 50100 "CLIP Course"
 {
     Caption = 'Course', Comment = 'ESP="Curso"';
     DataClassification = CustomerContent;
@@ -11,7 +11,7 @@ table 50100 "Course"
 
             trigger OnValidate()
             var
-                ResSetup: Record "Courses Setup";
+                ResSetup: Record "CLIP Courses Setup";
                 NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
                 if "No." <> xRec."No." then begin
@@ -43,7 +43,7 @@ table 50100 "Course"
             OptionMembers = " ","Instructor-Lead","Video Tutorial";
             OptionCaption = ' ,Instructor-Lead,Video Tutorial', Comment = 'ESP=" ,Guiado por profesor,Vídeo tutorial"';
         }
-        field(8; Type; Enum "Course Type")
+        field(8; Type; Enum "CLIP Course Type")
         {
             Caption = 'Type', Comment = 'ESP="Tipo"';
         }
@@ -62,7 +62,7 @@ table 50100 "Course"
 
     trigger OnInsert()
     var
-        CoursesSetup: Record "Courses Setup";
+        CoursesSetup: Record "CLIP Courses Setup";
         NoSeriesManagement: Codeunit NoSeriesManagement;
     begin
         if "No." = '' then begin
@@ -72,10 +72,10 @@ table 50100 "Course"
         end;
     end;
 
-    procedure AssistEdit(OldCourse: Record Course) Result: Boolean
+    procedure AssistEdit(OldCourse: Record "CLIP Course") Result: Boolean
     var
-        CoursesSetup: Record "Courses Setup";
-        Course: Record Course;
+        CoursesSetup: Record "CLIP Courses Setup";
+        Course: Record "CLIP Course";
         NoSeriesManagement: Codeunit NoSeriesManagement;
     // IsHandled: Boolean;
     begin

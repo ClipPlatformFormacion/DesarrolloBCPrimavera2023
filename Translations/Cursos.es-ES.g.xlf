@@ -217,6 +217,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum CLIP Course Type - EnumValue Video Tutorial - Property Caption</note>
           <target>Vídeo tutorial</target>
         </trans-unit>
+        <trans-unit id="EnumExtension 2284455868 - EnumValue 2553370741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1710557762">
+          <source>Course</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Curso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension CLIP Sales Line Type - EnumValue CLIP Course - Property Caption</note>
+          <target>Curso</target>
+        </trans-unit>
         <trans-unit id="PermissionSet 1580825612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Courses</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cursos"</note>

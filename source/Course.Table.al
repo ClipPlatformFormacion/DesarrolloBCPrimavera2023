@@ -51,6 +51,7 @@ table 50100 "CLIP Course"
         {
             Caption = 'Language Code', Comment = 'ESP="Cód. idioma"';
             TableRelation = Language;
+            ValidateTableRelation = false;
         }
         field(56; "No. Series"; Code[20])
         {

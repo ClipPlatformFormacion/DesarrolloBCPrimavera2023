@@ -43,6 +43,8 @@ page 50101 "CLIP Course Card"
             {
                 Caption = 'Invoicing', Comment = 'ESP="Facturación"';
                 field(Price; Rec.Price) { ApplicationArea = All; }
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group") { ApplicationArea = All; }
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group") { ApplicationArea = All; }
             }
         }
     }

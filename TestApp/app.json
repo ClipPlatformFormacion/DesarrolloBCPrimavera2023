@@ -1,7 +1,7 @@
 {
   "id": "fdff06a7-a8bb-461e-b8cb-8d9c8a077f5b",
-  "name": "TestApp",
-  "publisher": "Default publisher",
+  "name": "Cursos - TestApp",
+  "publisher": "ClipPlatform",
   "version": "1.0.0.0",
   "brief": "",
   "description": "",
@@ -16,7 +16,7 @@
   "application": "20.0.0.0",
   "idRanges": [
     {
-      "from": 50100,
+      "from": 50140,
       "to": 50149
     }
   ],

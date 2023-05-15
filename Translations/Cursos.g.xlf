@@ -173,6 +173,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses Setup - Control Course Nos. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3113827158 - Change 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>The Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CLIP Sales Order Subform - Change Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3335146236 - Field 346014409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Course Edition</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Edición curso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CLIP Sales Line - Field CLIP Course Edition - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 75238701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Course Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo curso"</note>

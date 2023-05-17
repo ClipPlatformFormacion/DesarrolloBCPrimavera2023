@@ -1,7 +1,7 @@
 table 50100 "CLIP Course"
 {
     Caption = 'Course', Comment = 'ESP="Curso"';
-    DataClassification = CustomerContent;
+    DataClassification = CustomerContent;//
 
     fields
     {

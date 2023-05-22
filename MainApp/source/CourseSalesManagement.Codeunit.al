@@ -15,6 +15,9 @@ codeunit 50100 "CLIP Course - Sales Management"
     var
         Course: Record "CLIP Course";
     begin
+        if SalesLine.Type <> SalesLine.Type::"CLIP Course" then
+            exit;
+
         Course.Get(SalesLine."No.");
 
         Course.TestField("Gen. Prod. Posting Group");

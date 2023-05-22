@@ -80,4 +80,42 @@ codeunit 50140 "CLIP Course Test"
         LibraryAssert.AreEqual(Course."Gen. Prod. Posting Group", SalesLine."Gen. Prod. Posting Group", 'El grupo contable no es correcto');
         LibraryAssert.AreEqual(Course."VAT Prod. Posting Group", SalesLine."VAT Prod. Posting Group", 'El grupo contable no es correcto');
     end;
+
+    [Test]
+    procedure EditionIsFilledInPostedDocuments()
+    var
+        Course: Record "CLIP Course";
+        CourseEdition: Record "CLIP Course Edition";
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        SalesShipmentLine: Record "Sales Shipment Line";
+        LibrarySales: Codeunit "Library - Sales";
+        LibraryAssert: Codeunit "Library Assert";
+        LibraryCourse: Codeunit "CLIP Library - Course";
+    begin
+        // [Scenario] Cuando se registra un documento de venta, la información de la edición de curso seleccionada por el usuario
+        //            queda guardada en los documentos registrados (albarán)
+
+        // [Given] Un curso con una edición y un documento de venta para el curso y edición
+        LibraryCourse.CreateCourse(Course);
+        CourseEdition := LibraryCourse.CreateEdition(Course."No.");
+
+        LibrarySales.CreateSalesHeader(SalesHeader, "Sales Document Type"::Order, '');
+        LibrarySales.CreateSalesLineSimple(SalesLine, SalesHeader);
+        SalesLine.Validate(Type, "Sales Line Type"::"CLIP Course");
+        SalesLine.Validate("No.", Course."No.");
+        SalesLine.Validate("CLIP Course Edition", CourseEdition.Edition);
+        SalesLine.Validate(Quantity, 1);
+        SalesLine.Modify();
+
+        // [When] se registra el albarán de venta
+        LibrarySales.PostSalesDocument(SalesHeader, true, false);
+
+        // [Then] la edición en el albarán es la correcta
+        SalesShipmentLine.SetRange("Order No.", SalesLine."Document No.");
+        SalesShipmentLine.SetRange("Order Line No.", SalesLine."Line No.");
+        SalesShipmentLine.FindLast();
+
+        LibraryAssert.AreEqual(SalesLine."CLIP Course Edition", SalesShipmentLine."CLIP Course Edition", 'La edición en el albarán no es correcta');
+    end;
 }

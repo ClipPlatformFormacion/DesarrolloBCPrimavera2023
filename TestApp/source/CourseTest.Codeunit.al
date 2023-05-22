@@ -118,4 +118,43 @@ codeunit 50140 "CLIP Course Test"
 
         LibraryAssert.AreEqual(SalesLine."CLIP Course Edition", SalesShipmentLine."CLIP Course Edition", 'La edición en el albarán no es correcta');
     end;
+
+    [Test]
+    procedure CourseLedgerEntriesAreCreated()
+    var
+        Course: Record "CLIP Course";
+        CourseEdition: Record "CLIP Course Edition";
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        SalesShipmentLine: Record "Sales Shipment Line";
+        CourseLedgerEntry: Record "CLIP Course Ledger Entry";
+        LibrarySales: Codeunit "Library - Sales";
+        LibraryAssert: Codeunit "Library Assert";
+        LibraryCourse: Codeunit "CLIP Library - Course";
+        PostedDocumentNo: Code[20];
+    begin
+        // [Scenario] Al registrar una factura de venta de un curso y edición, se generan movimientos de curso
+
+        // [Given] Un curso con una edición y un documento de venta para el curso y edición
+        LibraryCourse.CreateCourse(Course);
+        CourseEdition := LibraryCourse.CreateEdition(Course."No.");
+
+        LibrarySales.CreateSalesHeader(SalesHeader, "Sales Document Type"::Order, '');
+        LibrarySales.CreateSalesLineSimple(SalesLine, SalesHeader);
+        SalesLine.Validate(Type, "Sales Line Type"::"CLIP Course");
+        SalesLine.Validate("No.", Course."No.");
+        SalesLine.Validate("CLIP Course Edition", CourseEdition.Edition);
+        SalesLine.Validate(Quantity, 1);
+        SalesLine.Modify();
+
+        // [When] se registra la factura de venta
+        PostedDocumentNo := LibrarySales.PostSalesDocument(SalesHeader, true, true);
+
+        // [Then] el movimiento de curso es correcto
+        CourseLedgerEntry.SetRange("Document No.", PostedDocumentNo);
+        LibraryAssert.AreEqual(1, CourseLedgerEntry.Count(), 'El nº de movimientos creados es incorrecto');
+
+        CourseLedgerEntry.FindFirst();
+        // TODO: Comprobaciones de los valores de los campos
+    end;
 }

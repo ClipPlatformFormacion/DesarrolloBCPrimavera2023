@@ -33,4 +33,53 @@ codeunit 50100 "CLIP Course - Sales Management"
     local procedure OnAfterAssignCourseValues(var SalesLine: Record "Sales Line"; Course: Record "CLIP Course"; SalesHeader: Record "Sales Header")
     begin
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnPostSalesLineOnBeforePostSalesLine', '', false, false)]
+    local procedure OnPostSalesLineOnBeforePostSalesLine(SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; GenJnlLineDocNo: Code[20]; GenJnlLineExtDocNo: Code[35]; GenJnlLineDocType: Enum "Gen. Journal Document Type"; SrcCode: Code[10]; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; var IsHandled: Boolean);
+    begin
+        if SalesLine.Type <> SalesLine.Type::"CLIP Course" then
+            exit;
+
+        PostCourseJournalLine(SalesHeader, SalesLine, GenJnlLineDocNo, GenJnlLineExtDocNo, GenJnlLineDocType, SrcCode);
+    end;
+
+    local procedure PostCourseJournalLine(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; GenJnlLineDocNo: Code[20]; GenJnlLineExtDocNo: Code[35]; GenJnlLineDocType: Enum "Gen. Journal Document Type"; SrcCode: Code[10])
+    var
+        ResJnlLine: Record "Res. Journal Line";
+        ResJnlPostLine: Codeunit "Res. Jnl.-Post Line";
+        IsHandled: Boolean;
+    begin
+        IsHandled := false;
+        OnBeforePostCourseJournalLine(SalesHeader, SalesLine, IsHandled, GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, ResJnlPostLine);
+        if IsHandled then
+            exit;
+
+        if SalesLine."Qty. to Invoice" = 0 then
+            exit;
+
+        ResJnlLine.Init();
+        ResJnlLine.CopyFromSalesHeader(SalesHeader);
+        ResJnlLine.CopyDocumentFields(GenJnlLineDocNo, GenJnlLineExtDocNo, SrcCode, SalesHeader."Posting No. Series");
+        ResJnlLine.CopyFromSalesLine(SalesLine);
+        OnPostCourseJournalLineOnAfterInit(ResJnlLine, SalesLine);
+
+        ResJnlPostLine.RunWithCheck(ResJnlLine);
+
+        OnAfterPostCourseJournalLine(SalesHeader, SalesLine, ResJnlLine);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnPostCourseJournalLineOnAfterInit(var ResJnlLine: Record "Res. Journal Line"; var SalesLine: Record "Sales Line")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforePostCourseJournalLine(var SalesHeader: Record "Sales Header"; var SalesLine: Record "Sales Line"; var IsHandled: Boolean; DocNo: Code[20]; ExtDocNo: Code[35]; SourceCode: Code[10]; var ResJnlPostLine: Codeunit "Res. Jnl.-Post Line")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterPostCourseJournalLine(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; ResJnlLine: Record "Res. Journal Line")
+    begin
+    end;
 }

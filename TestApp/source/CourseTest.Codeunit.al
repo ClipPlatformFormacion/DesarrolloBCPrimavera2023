@@ -155,6 +155,14 @@ codeunit 50140 "CLIP Course Test"
         LibraryAssert.AreEqual(1, CourseLedgerEntry.Count(), 'El nº de movimientos creados es incorrecto');
 
         CourseLedgerEntry.FindFirst();
-        // TODO: Comprobaciones de los valores de los campos
+        LibraryAssert.AreEqual(PostedDocumentNo, CourseLedgerEntry."Document No.", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesHeader."Posting Date", CourseLedgerEntry."Posting Date", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine."No.", CourseLedgerEntry."Course No.", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine."CLIP Course Edition", CourseLedgerEntry."Course Edition", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine.Description, CourseLedgerEntry.Description, 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine."Qty. to Invoice", CourseLedgerEntry.Quantity, 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine."Unit Price", CourseLedgerEntry."Unit Price", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesLine."Qty. to Invoice" * SalesLine."Unit Price", CourseLedgerEntry."Total Price", 'Datos incorrectos');
+        LibraryAssert.AreEqual(SalesHeader."Sell-to Customer No.", CourseLedgerEntry."Customer No.", 'Datos incorrectos');
     end;
 }

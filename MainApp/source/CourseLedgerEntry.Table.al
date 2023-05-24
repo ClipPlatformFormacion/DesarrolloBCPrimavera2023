@@ -77,22 +77,23 @@ table 50103 "CLIP Course Ledger Entry"
         exit(FindRecordManagement.GetLastEntryIntFieldValue(Rec, FieldNo("Entry No.")))
     end;
 
-    procedure CopyFromResJnlLine(ResJournalLine: Record "Res. Journal Line")
+    procedure CopyFromCourseLine(CourseJournalLine: Record "CLIP Course Journal Line")
     begin
-        "Document No." := ResJournalLine."Document No.";
-        "Posting Date" := ResJournalLine."Posting Date";
-        "Course No." := ResJournalLine."Resource No.";
-        Description := ResJournalLine.Description;
-        Quantity := ResJournalLine.Quantity;
-        "Unit Price" := ResJournalLine."Unit Price";
-        "Total Price" := ResJournalLine."Total Price";
-        "Customer No." := ResJournalLine."Source No.";
+        "Document No." := CourseJournalLine."Document No.";
+        "Posting Date" := CourseJournalLine."Posting Date";
+        "Course No." := CourseJournalLine."Course No.";
+        "Course Edition" := CourseJournalLine."Course Edition";
+        Description := CourseJournalLine.Description;
+        Quantity := CourseJournalLine.Quantity;
+        "Unit Price" := CourseJournalLine."Unit Price";
+        "Total Price" := CourseJournalLine."Total Price";
+        "Customer No." := CourseJournalLine."Customer No.";
 
-        OnAfterCopyFromResJnlLine(Rec, ResJournalLine);
+        OnAfterCopyFromCourseJournalLine(Rec, CourseJournalLine);
     end;
 
     [IntegrationEvent(false, false)]
-    procedure OnAfterCopyFromResJnlLine(var CourseLedgerEntry: Record "CLIP Course Ledger Entry"; ResJournalLine: Record "Res. Journal Line")
+    procedure OnAfterCopyFromCourseJournalLine(var CourseLedgerEntry: Record "CLIP Course Ledger Entry"; CourseJournalLine: Record "CLIP Course Journal Line")
     begin
     end;
 }

@@ -35,8 +35,7 @@ page 50105 "CLIP Course Ledger Entries"
                 field("Course Edition"; Rec."Course Edition")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the number of the resource group.';
-                    Visible = false;
+                    ToolTip = 'Specifies the course edition.';
                 }
                 field(Description; Rec.Description)
                 {

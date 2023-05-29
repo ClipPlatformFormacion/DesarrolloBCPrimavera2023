@@ -82,4 +82,43 @@ codeunit 50100 "CLIP Course - Sales Management"
     local procedure OnAfterPostCourseJournalLine(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; CourseJournalLine: Record "CLIP Course Journal Line")
     begin
     end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Quantity', false, false)]
+    local procedure OnAfterValidateEvent_Quantity(var Rec: Record "Sales Line"; var xRec: Record "Sales Line"; CurrFieldNo: Integer)
+    begin
+        CheckSalesForCourseEdition(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'CLIP Course Edition', false, false)]
+    local procedure OnAfterValidateEvent_CourseEdition(var Rec: Record "Sales Line"; var xRec: Record "Sales Line"; CurrFieldNo: Integer)
+    begin
+        CheckSalesForCourseEdition(Rec);
+    end;
+
+    procedure CheckSalesForCourseEdition(var SalesLine: Record "Sales Line")
+    var
+        CourseEdition: Record "CLIP Course Edition";
+        CourseLedgerEntry: Record "CLIP Course Ledger Entry";
+        PreviousSales: Decimal;
+    begin
+        if SalesLine.Type <> SalesLine.Type::"CLIP Course" then
+            exit;
+        if (SalesLine."No." = '') or (SalesLine."CLIP Course Edition" = '') then
+            exit;
+
+        CourseEdition.Get(SalesLine."No.", SalesLine."CLIP Course Edition");
+
+        CourseLedgerEntry.SetRange("Course No.", SalesLine."No.");
+        CourseLedgerEntry.SetRange("Course Edition", SalesLine."CLIP Course Edition");
+        if CourseLedgerEntry.FindSet() then
+            repeat
+                PreviousSales := PreviousSales + CourseLedgerEntry.Quantity;
+            until CourseLedgerEntry.Next() = 0;
+
+        if (PreviousSales + SalesLine.Quantity) > CourseEdition."Max. Students" then
+            Message('La venta actual para el curso %1 edición %2 superará el número máximo de alumnos %3',
+            SalesLine."No.", SalesLine."CLIP Course Edition", CourseEdition."Max. Students");
+
+    end;
 }

@@ -1,8 +1,8 @@
 table 50103 "CLIP Course Ledger Entry"
 {
     Caption = 'Course Ledger Entry', Comment = 'ESP="Mov. Curso"';
-    DrillDownPageID = "Resource Ledger Entries";
-    LookupPageID = "Resource Ledger Entries";
+    DrillDownPageID = "CLIP Course Ledger Entries";
+    LookupPageID = "CLIP Course Ledger Entries";
     DataClassification = CustomerContent;
 
     fields
@@ -60,6 +60,11 @@ table 50103 "CLIP Course Ledger Entry"
         key(Key1; "Entry No.")
         {
             Clustered = true;
+        }
+        key(SK2; "Course No.", "Course Edition", "Posting Date")
+        {
+            MaintainSiftIndex = true;
+            SumIndexFields = Quantity;
         }
     }
 

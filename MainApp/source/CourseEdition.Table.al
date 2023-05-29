@@ -21,6 +21,26 @@ table 50102 "CLIP Course Edition"
         field(4; "Max. Students"; Integer)
         {
             Caption = 'Max. Students', Comment = 'ESP="Nº máx. alumnos"';
+            BlankZero = true;
+        }
+        field(10; "Sales (Qty.)"; Decimal)
+        {
+            Caption = 'Sales (Qty.)', comment = 'ESP="Ventas (cdad.)"';
+            Editable = false;
+            DecimalPlaces = 0 : 5;
+            BlankZero = true;
+            FieldClass = FlowField;
+            CalcFormula = sum("CLIP Course Ledger Entry".Quantity
+                                where("Course No." = field("Course No."),
+                                        "Course Edition" = field(Edition),
+                                        "Posting Date" = field("Date Filter")
+                                    )
+                               );
+        }
+        field(11; "Date Filter"; Date)
+        {
+            Caption = 'Date Filter', comment = 'ESP="Filtro fecha"';
+            FieldClass = FlowFilter;
         }
     }
 

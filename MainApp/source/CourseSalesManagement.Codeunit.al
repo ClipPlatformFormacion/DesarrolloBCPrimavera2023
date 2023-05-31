@@ -100,7 +100,6 @@ codeunit 50100 "CLIP Course - Sales Management"
     var
         CourseEdition: Record "CLIP Course Edition";
         CourseLedgerEntry: Record "CLIP Course Ledger Entry";
-        PreviousSales: Decimal;
         MaxStudentsExceededMsg: Label 'The current sale for course %1 edition %2 will exceed the maximum number of students %3',
                             Comment = 'ESP="La venta actual para el curso %1 edición %2 superará el número máximo de alumnos %3"';
     begin
@@ -109,16 +108,14 @@ codeunit 50100 "CLIP Course - Sales Management"
         if (SalesLine."No." = '') or (SalesLine."CLIP Course Edition" = '') then
             exit;
 
+        CourseEdition.SetLoadFields("Max. Students");
         CourseEdition.Get(SalesLine."No.", SalesLine."CLIP Course Edition");
 
         CourseLedgerEntry.SetRange("Course No.", SalesLine."No.");
         CourseLedgerEntry.SetRange("Course Edition", SalesLine."CLIP Course Edition");
-        if CourseLedgerEntry.FindSet() then
-            repeat
-                PreviousSales := PreviousSales + CourseLedgerEntry.Quantity;
-            until CourseLedgerEntry.Next() = 0;
+        CourseLedgerEntry.CalcSums(Quantity);
 
-        if (PreviousSales + SalesLine.Quantity) > CourseEdition."Max. Students" then
+        if (CourseLedgerEntry.Quantity + SalesLine.Quantity) > CourseEdition."Max. Students" then
             Message(MaxStudentsExceededMsg, SalesLine."No.", SalesLine."CLIP Course Edition", CourseEdition."Max. Students");
     end;
 }

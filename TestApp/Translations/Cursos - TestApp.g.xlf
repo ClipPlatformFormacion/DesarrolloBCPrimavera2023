@@ -2,7 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Cursos - TestApp">
     <body>
-      <group id="body" />
+      <group id="body">
+        <trans-unit id="Codeunit 2637608375 - Method 1525694037 - NamedType 285226215" size-unit="char" translate="yes" xml:space="preserve">
+          <source>will exceed the maximum number of students</source>
+          <note from="Developer" annotates="general" priority="2">ESP="superará el número máximo de alumnos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CLIP Course Test - Method MaxStudentCheck - NamedType MaxStudentsExceededTok</note>
+        </trans-unit>
+      </group>
     </body>
   </file>
 </xliff>

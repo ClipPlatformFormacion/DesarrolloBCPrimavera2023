@@ -266,8 +266,9 @@ codeunit 50140 "CLIP Course Test"
     procedure MaxStudentCheck(Message: Text[1024])
     var
         LibraryAssert: Codeunit "Library Assert";
+        MaxStudentsExceededTok: Label 'will exceed the maximum number of students', comment = 'ESP="superará el número máximo de alumnos"';
     begin
-        if not Message.Contains('superará el número máximo de alumnos') then
-            Error('El Message no es el correcto: %1', Message);
+        if not Message.Contains(MaxStudentsExceededTok) then
+            Error('El Message no es el correcto. Esperado: %1, Actual: %2', MaxStudentsExceededTok, Message);
     end;
 }

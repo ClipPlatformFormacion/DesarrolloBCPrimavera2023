@@ -238,6 +238,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CLIP Courses Setup - Field Primary Key - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2895663823 - Method 2157820504 - NamedType 1176815304" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The current sale for course %1 edition %2 will exceed the maximum number of students %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La venta actual para el curso %1 edición %2 superará el número máximo de alumnos %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CLIP Course - Sales Management - Method CheckSalesForCourseEdition - NamedType MaxStudentsExceededMsg</note>
+        </trans-unit>
         <trans-unit id="Page 3927749657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Course Card</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ficha curso"</note>

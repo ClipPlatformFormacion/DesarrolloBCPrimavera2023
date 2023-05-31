@@ -397,6 +397,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Course Ledger Entries - Action &amp;Navigate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2667201611 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Course</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Proceso,Informes,Curso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Course List - Property PromotedActionCategories</note>
+          <target>Nuevo,Proceso,Informes,Curso</target>
+        </trans-unit>
         <trans-unit id="Page 2667201611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Courses</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cursos"</note>

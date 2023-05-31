@@ -7,6 +7,7 @@ page 50100 "CLIP Course List"
     SourceTable = "CLIP Course";
     Editable = false;
     CardPageId = "CLIP Course Card";
+    PromotedActionCategories = 'New,Process,Report,Course', Comment = 'ESP="Nuevo,Proceso,Informes,Curso"';
 
     layout
     {
@@ -46,6 +47,9 @@ page 50100 "CLIP Course List"
                 ApplicationArea = All;
                 Caption = 'Editions', Comment = 'ESP="Ediciones"';
                 Image = CodesList;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Category4;
                 RunObject = page "CLIP Course Editions";
                 RunPageLink = "Course No." = field("No.");
             }
@@ -57,6 +61,7 @@ page 50100 "CLIP Course List"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                PromotedOnly = true;
                 RunObject = Page "CLIP Course Ledger Entries";
                 RunPageLink = "Course No." = field("No.");
                 ShortCutKey = 'Ctrl+F7';

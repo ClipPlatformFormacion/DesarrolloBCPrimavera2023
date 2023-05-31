@@ -443,6 +443,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page CLIP Courses Setup - Control Course Nos. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Report 1580825612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Courses List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Listado de Cursos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report CLIP Courses - Property Caption</note>
+          <target>Listado de Cursos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3113827158 - Change 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>The Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="La Descripción"</note>

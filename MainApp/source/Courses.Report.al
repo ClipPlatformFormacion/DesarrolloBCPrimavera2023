@@ -10,6 +10,11 @@ report 50100 "CLIP Courses"
         dataitem(Course; "CLIP Course")
         {
             RequestFilterFields = "No.", "Language Code";
+
+            column(ReportCaption; ReportCaptionLbl) { }
+            column(COMPANYNAME; COMPANYPROPERTY.DisplayName()) { }
+            column(TableFilters; Course.TableCaption() + ': ' + CourseFilter) { }
+            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl) { }
             column(CourseNo; Course."No.") { IncludeCaption = true; }
             column(CourseName; Course.Name) { IncludeCaption = true; }
             column(CourseDurationHours; "Duration (hours)") { IncludeCaption = true; }
@@ -83,8 +88,18 @@ report 50100 "CLIP Courses"
         }
     }
 
+    trigger OnPreReport()
+    var
+        FormatDocument: Codeunit "Format Document";
+    begin
+        CourseFilter := FormatDocument.GetRecordFiltersWithCaptions(Course);
+    end;
+
     var
         Counter: Integer;
         CounterEdition: Integer;
         ShowMessage: Boolean;
+        ReportCaptionLbl: Label 'Course List', Comment = 'ESP="Listado de cursos"';
+        CurrReport_PAGENOCaptionLbl: Label 'Page', Comment = 'ESP="Pág."';
+        CourseFilter: Text;
 }

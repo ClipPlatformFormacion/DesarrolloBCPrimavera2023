@@ -10,9 +10,9 @@ report 50100 "CLIP Courses"
         dataitem(Course; "CLIP Course")
         {
             RequestFilterFields = "No.", "Language Code";
-            column(CourseNo; Course."No.") { }
-            column(CourseName; Course.Name) { }
-            column(CourseDurationHours; "Duration (hours)") { }
+            column(CourseNo; Course."No.") { IncludeCaption = true; }
+            column(CourseName; Course.Name) { IncludeCaption = true; }
+            column(CourseDurationHours; "Duration (hours)") { IncludeCaption = true; }
 
             dataitem(CourseEdition; "CLIP Course Edition")
             {
@@ -20,9 +20,9 @@ report 50100 "CLIP Courses"
                 DataItemLinkReference = Course;
                 DataItemLink = "Course No." = field("No.");
 
-                column(Edition; CourseEdition.Edition) { }
-                column(EditionMaxStudents; CourseEdition."Max. Students") { }
-                column(EditionSalesQty; CourseEdition."Sales (Qty.)") { }
+                column(Edition; CourseEdition.Edition) { IncludeCaption = true; }
+                column(EditionMaxStudents; CourseEdition."Max. Students") { IncludeCaption = true; }
+                column(EditionSalesQty; CourseEdition."Sales (Qty.)") { IncludeCaption = true; }
 
                 trigger OnAfterGetRecord()
                 begin

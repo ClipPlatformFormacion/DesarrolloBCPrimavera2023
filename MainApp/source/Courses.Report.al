@@ -3,7 +3,7 @@ report 50100 "CLIP Courses"
     Caption = 'Courses List', comment = 'ESP="Listado de Cursos"';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    ProcessingOnly = true;
+    DefaultRenderingLayout = MainRDLCLayout;
 
     dataset
     {
@@ -71,14 +71,14 @@ report 50100 "CLIP Courses"
         end;
     }
 
-    // rendering
-    // {
-    //     layout(LayoutName)
-    //     {
-    //         Type = RDLC;
-    //         LayoutFile = 'mylayout.rdl';
-    //     }
-    // }
+    rendering
+    {
+        layout(MainRDLCLayout)
+        {
+            Type = RDLC;
+            LayoutFile = './source/Courses_MainRdlcLayout.rdl';
+        }
+    }
 
     var
         Counter: Integer;

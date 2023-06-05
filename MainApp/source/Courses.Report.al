@@ -39,29 +39,37 @@ report 50100 "CLIP Courses"
 
             trigger OnPostDataItem()
             begin
-                Message('Cursos: ' + Format(Counter));
-                Message('Ediciones: ' + Format(CounterEdition));
+                if ShowMessage then begin
+                    Message('Cursos: ' + Format(Counter));
+                    Message('Ediciones: ' + Format(CounterEdition));
+                end;
             end;
         }
     }
 
-    // requestpage
-    // {
-    //     layout
-    //     {
-    //         area(Content)
-    //         {
-    //             group(GroupName)
-    //             {
-    //                 field(Name; SourceExpression)
-    //                 {
-    //                     ApplicationArea = All;
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(Options)
+                {
+                    Caption = 'Options', comment = 'ESP="Opciones"';
+                    field(ShowMessageControl; ShowMessage)
+                    {
+                        Caption = 'Show Message', comment = 'ESP="Mostrar Message"';
+                        ApplicationArea = All;
+                    }
+                }
+            }
+        }
 
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+        trigger OnInit()
+        begin
+            ShowMessage := true;
+        end;
+    }
 
     // rendering
     // {
@@ -75,4 +83,5 @@ report 50100 "CLIP Courses"
     var
         Counter: Integer;
         CounterEdition: Integer;
+        ShowMessage: Boolean;
 }

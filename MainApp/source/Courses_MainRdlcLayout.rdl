@@ -63,7 +63,29 @@ End Function
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
-      <Fields />
+      <Fields>
+        <Field Name="CourseNo">
+          <DataField>CourseNo</DataField>
+        </Field>
+        <Field Name="CourseName">
+          <DataField>CourseName</DataField>
+        </Field>
+        <Field Name="CourseDurationHours">
+          <DataField>CourseDurationHours</DataField>
+        </Field>
+        <Field Name="Edition">
+          <DataField>Edition</DataField>
+        </Field>
+        <Field Name="EditionMaxStudents">
+          <DataField>EditionMaxStudents</DataField>
+        </Field>
+        <Field Name="EditionSalesQty">
+          <DataField>EditionSalesQty</DataField>
+        </Field>
+        <Field Name="EditionSalesQtyFormat">
+          <DataField>EditionSalesQtyFormat</DataField>
+        </Field>
+      </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
         <CommandText />

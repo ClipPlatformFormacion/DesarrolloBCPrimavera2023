@@ -10,16 +10,19 @@ report 50100 "CLIP Courses"
         dataitem(Course; "CLIP Course")
         {
             RequestFilterFields = "No.", "Language Code";
-            // column(ColumnName; SourceFieldName)
-            // {
+            column(CourseNo; Course."No.") { }
+            column(CourseName; Course.Name) { }
+            column(CourseDurationHours; "Duration (hours)") { }
 
-            // }
-
-            dataitem("CLIP Course Edition"; "CLIP Course Edition")
+            dataitem(CourseEdition; "CLIP Course Edition")
             {
                 DataItemTableView = sorting("Course No.", Edition) order(ascending);
                 DataItemLinkReference = Course;
                 DataItemLink = "Course No." = field("No.");
+
+                column(Edition; CourseEdition.Edition) { }
+                column(EditionMaxStudents; CourseEdition."Max. Students") { }
+                column(EditionSalesQty; CourseEdition."Sales (Qty.)") { }
 
                 trigger OnAfterGetRecord()
                 begin

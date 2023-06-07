@@ -38,7 +38,10 @@ codeunit 50142 "CLIP Library - Course"
         CoursesSetup: Record "CLIP Courses Setup";
         NoSeriesCode: Code[20];
     begin
-        CoursesSetup.Get();
+        if not CoursesSetup.Get() then begin
+            CoursesSetup.Init();
+            CoursesSetup.Insert();
+        end;
         NoSeriesCode := LibraryUtility.GetGlobalNoSeriesCode();
         if NoSeriesCode <> CoursesSetup."Course Nos." then begin
             CoursesSetup.Validate("Course Nos.", LibraryUtility.GetGlobalNoSeriesCode());

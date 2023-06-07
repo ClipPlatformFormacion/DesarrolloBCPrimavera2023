@@ -37,6 +37,7 @@ page 50103 "CLIP Course Editions"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                PromotedOnly = true;
                 RunObject = Page "CLIP Course Ledger Entries";
                 RunPageLink = "Course No." = field("Course No."), "Course Edition" = field(Edition);
                 ShortCutKey = 'Ctrl+F7';

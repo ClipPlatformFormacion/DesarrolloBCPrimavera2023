@@ -1,3 +1,4 @@
+#pragma warning disable AA0008,AA0217,AA0021,AA0204,AA0074,AA0005,AA0244,AW0006,AA0072
 report 50101 "CLIP Standard Sales - Invoice"
 {
     RDLCLayout = './source/StandardSalesInvoice.rdl';
@@ -1704,3 +1705,4 @@ report 50101 "CLIP Standard Sales - Invoice"
     end;
 }
 
+#pragma warning restore

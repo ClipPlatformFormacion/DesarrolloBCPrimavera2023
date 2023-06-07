@@ -23,7 +23,9 @@ table 50102 "CLIP Course Edition"
             Caption = 'Max. Students', Comment = 'ESP="Nº máx. alumnos"';
             BlankZero = true;
         }
+#pragma warning disable AA0232
         field(10; "Sales (Qty.)"; Decimal)
+#pragma warning restore
         {
             Caption = 'Sales (Qty.)', comment = 'ESP="Ventas (cdad.)"';
             Editable = false;

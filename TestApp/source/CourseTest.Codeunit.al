@@ -150,7 +150,9 @@ codeunit 50140 "CLIP Course Test"
         PostedDocumentNo := LibrarySales.PostSalesDocument(SalesHeader, true, true);
 
         // [Then] el movimiento de curso es correcto
+#pragma warning disable AA0210
         CourseLedgerEntry.SetRange("Document No.", PostedDocumentNo);
+#pragma warning restore
         LibraryAssert.AreEqual(1, CourseLedgerEntry.Count(), 'El nº de movimientos creados es incorrecto');
 
         CourseLedgerEntry.FindFirst();
@@ -196,7 +198,9 @@ codeunit 50140 "CLIP Course Test"
         PostedDocumentNo := LibrarySales.PostSalesDocument(SalesHeader, true, true);
 
         // [Then] el movimiento de curso es correcto
+#pragma warning disable AA0210
         CourseLedgerEntry.SetRange("Document No.", PostedDocumentNo);
+#pragma warning restore
         LibraryAssert.AreEqual(1, CourseLedgerEntry.Count(), 'El nº de movimientos creados es incorrecto');
 
         CourseLedgerEntry.FindFirst();
@@ -219,11 +223,8 @@ codeunit 50140 "CLIP Course Test"
         CourseEdition: Record "CLIP Course Edition";
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
-        CourseLedgerEntry: Record "CLIP Course Ledger Entry";
         LibrarySales: Codeunit "Library - Sales";
-        LibraryAssert: Codeunit "Library Assert";
         LibraryCourse: Codeunit "CLIP Library - Course";
-        PostedDocumentNo: Code[20];
     begin
         // [Scenario] Cuando se intenta hacer una venta que supera el número máximo de alumnos
         //              permitidos para una edición, el sistema muestra un mensaje de aviso al usuario
@@ -265,7 +266,6 @@ codeunit 50140 "CLIP Course Test"
     [MessageHandler]
     procedure MaxStudentCheck(Message: Text[1024])
     var
-        LibraryAssert: Codeunit "Library Assert";
         MaxStudentsExceededTok: Label 'will exceed the maximum number of students', comment = 'ESP="superará el número máximo de alumnos"';
     begin
         if not Message.Contains(MaxStudentsExceededTok) then

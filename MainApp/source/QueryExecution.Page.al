@@ -34,6 +34,10 @@ page 50106 "CLIP Query Execution"
                     Message(Format(Counter));
                 end;
             }
+            action("XMLPort")
+            {
+                RunObject = xmlport "CLIP Export Sales Orders";
+            }
         }
     }
 }

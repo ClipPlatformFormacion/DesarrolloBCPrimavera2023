@@ -1,12 +1,12 @@
 ﻿#Install-Module -Name BcContainerHelper -Force
 
-$artifactUrl = Get-BCArtifactUrl -country es -select Latest -type Sandbox -version 20.5
+$artifactUrl = Get-BCArtifactUrl -country es -select Latest -type Sandbox -version 22.1
 
 New-BcContainer `
     -accept_eula `
     -artifactUrl $artifactUrl `
     -auth UserPassword `
-    -containerName BC20CU5ES `
+    -containerName BC22CU1ES `
     -includeTestLibrariesOnly `
     -includeTestToolkit `
     -updateHosts `
